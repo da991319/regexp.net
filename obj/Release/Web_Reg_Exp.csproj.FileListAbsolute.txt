@@ -1,0 +1,8 @@
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Release\ResolveAssemblyReference.cache
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.dll
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.pdb
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.dll
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.pdb
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.xml
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Release\Web_Reg_Exp.dll
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Release\Web_Reg_Exp.pdb

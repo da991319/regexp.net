@@ -1,0 +1,157 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head><title>
+	Home Page
+</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+</head>
+<body>
+            
+          
+<script type="text/javascript">
+
+function SetOption()
+{
+    var value = $("input[name=language]:checked").val();
+    switch(value)
+    {
+	case "js":
+	    $(".JsOption").show();
+	    $(".NetOption").hide();
+	    break;
+	case ".net":
+	    $(".NetOption").show();
+	    $(".JsOption").hide();
+	    break;
+    }
+}
+
+function CheckReg(){
+    var value = $("input[name=language]:checked").val();
+    switch(value)
+    {
+	case "js":
+	    jsReg();
+	    break;
+	case ".net":
+	    netReg();
+	    break;
+    }
+}
+
+function jsReg() {
+    if ($("#TxtSearchString").val().length > 0 && $("#TxtPattern").val().length > 0) {
+	var modifiers = "";
+	if($("#IgnoreCase").is(":checked"))
+	{
+	    modifiers = modifiers + "i";
+	}
+	
+	if($("#Multiline").is(":checked"))
+	{
+	    modifiers = modifiers + "m";
+	}
+	
+	if($("#Global").is(":checked"))
+	{
+	    modifiers = modifiers + "g"
+	}
+	
+	var pattern = new RegExp($("#TxtPattern").val(),modifiers);
+	if(pattern.test($("#TxtSearchString").val()))
+	{
+	    $("#LabelResponse").html("");
+	    //var matches = pattern.match($("#TxtSearchString").val());
+	    var matches = $("#TxtSearchString").val().match(pattern);
+	    var i;
+	    for(i=0; i < matches.length;i++)
+	    {
+		$("#LabelResponse").append((i+1) + ": " + matches[i] + "<br />");
+	    }
+	}
+	else
+	{
+	    $("#LabelResponse").html("No Match found");
+	}
+	    
+    }
+    else
+    {
+	$("#LabelResponse").html("");
+    }
+};
+
+function netReg() {
+    var input = $("#TxtSearchString").val();
+    var pattern =  $("#TxtPattern").val();
+    $.ajax({
+        type: "POST",
+        url: "http://aspspider.net/tiphryam/RegExp.ashx",
+        data: "input=" + input + "&pattern=" + pattern,
+        dataType: 'jsonp',
+        crossDomain: true,
+        success: function (d) {
+            var result = d;
+            $("#LabelResponse").html(result[0]);
+        }
+
+    });
+};
+
+</script>
+<div id="regexpmain">
+<div>
+    
+    <input type="radio" name="language" id="language1" value="js" checked="checked" onclick="SetOption()"/>
+    <label for="language1">Javascript</label>
+    <input type="radio" name="language" id="language2" value=".net" onclick="SetOption()"/>
+    <label for="language2" >.Net</label>
+    
+</div>
+    <div>
+	<label for="IgnoreCase">IgnoreCase</label>
+	<input id="IgnoreCase" type="checkbox" />
+	<label for="Global" class="JsOption">Global</label>
+	<input id="Global" type="checkbox" class="JsOption" />
+	<label for="Multiline" class="JsOption">Multiline</label>
+	<input id="Multiline" type="checkbox"  class="JsOption"/>
+	<label for="CheckCult" class="NetOption">Culture Invariant</label>
+	<input id="CheckCult" type="checkbox" class="NetOption"/>
+	<label for="ExplicitCapture" class="NetOption">ExplicitCapture</label>
+	<input id="ExplicitCapture" type="checkbox" class="NetOption"/>
+	<label for="IgnorePatterWhiteSpace" class="NetOption">IgnorePatterWhiteSpace</label>
+	<input id="IgnorePatterWhiteSpace" type="checkbox" class="NetOption"/>
+	<label for="RightToLeft" class="NetOption">RightToLeft</label>
+	<input id="RightToLeft" type="checkbox" class="NetOption"/>
+	<label for="SingleLine" class="NetOption">SingleLine</label>
+	<input id="SingleLine" type="checkbox" class="NetOption"/>
+    </div>
+    <fieldset class="regexpinput">
+	<legend>Input</legend>
+    <div id="regexpsearch">
+        <label for="TxtSearchString">Search String</label>
+	<br />
+        <textarea id="TxtSearchString" onchange="CheckReg()" cols="80" rows="6"></textarea>
+    </div>
+    <div id="regexppattern">
+        <label for="TxtPattern">Pattern</label>
+	<br />
+        <textarea id="TxtPattern" onchange="CheckReg()" cols="80" rows="6"></textarea>
+        
+    </div>
+    <div class="regexp" id="regexpresponse">
+        <label id="LabelResponse"></label>
+
+    </div>
+    </fieldset>
+    <div>
+        <input type="button" id="BtnGo" value="Check" onclick="CheckReg()" />
+    </div>
+</div>
+<script type="text/javascript">
+SetOption();
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,134 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head><title>
+	Home Page
+</title>
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+</head>
+<body>
+            
+          
+<script type="text/javascript">
+    
+function CheckReg(){
+    var value = $("input[name=language]:checked").val();
+    switch(value)
+    {
+	case "js":
+	    jsReg();
+	    break;
+	case ".net":
+	    netReg();
+	    break;
+    }
+}
+
+function jsReg() {
+    if ($("#TxtSearchString").val().length > 0 && $("#TxtPattern").val().length > 0) {
+	var modifiers = "";
+	if($("#IgnoreCase").is(":checked"))
+	{
+	    modifiers = modifiers + "i";
+	}
+	
+	if($("#Multiline").is(":checked"))
+	{
+	    modifiers = modifiers + "m";
+	}
+	
+	if($("#Global").is(":checked"))
+	{
+	    modifiers = modifiers + "g"
+	}
+	
+	var pattern = new RegExp($("#TxtPattern").val(),modifiers);
+	if(pattern.test($("#TxtSearchString").val()))
+	{
+	    $("#LabelResponse").html("");
+	    //var matches = pattern.match($("#TxtSearchString").val());
+	    var matches = $("#TxtSearchString").val().match(pattern);
+	    var i;
+	    for(i=0; i < matches.length;i++)
+	    {
+		$("#LabelResponse").append(i + ":" + matches[i] + "<br />");
+	    }
+	}
+	else
+	{
+	    $("#LabelResponse").html("No Match found");
+	}
+	    
+    }
+    else
+    {
+	$("#LabelResponse").html("");
+    }
+};
+
+function netReg() {
+    var input = $("#TxtSearchString").val();
+    var pattern =  $("#TxtPattern").val();
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:50451/RegExp.ashx",
+        data: "input=" + input + "&pattern=" + pattern,
+        dataType: 'json',
+        success: function (d) {
+            var result = d;
+            $("#LabelResponse").html(result[0]);
+        }
+
+    });
+};
+
+</script>
+<div>
+    
+    <input type="radio" name="language" id="language1" value="js" checked="checked"/>
+    <label for="language1">Javascript</label>
+    <input type="radio" name="language" id="language2" value=".net"/>
+    <label for="language2">.Net</label>
+    
+</div>
+    <div>
+	<label for="CheckCult">Culture Invariant</label>
+	<input id="CheckCult" type="checkbox" />
+	<label for="ExplicitCapture">ExplicitCapture</label>
+	<input id="ExplicitCapture" type="checkbox" />
+	<label for="IgnoreCase">IgnoreCase</label>
+	<input id="IgnoreCase" type="checkbox" />
+	<label for="IgnorePatterWhiteSpace">IgnorePatterWhiteSpace</label>
+	<input id="IgnorePatterWhiteSpace" type="checkbox" />
+	<label for="Multiline">Multiline</label>
+	<input id="Multiline" type="checkbox" />
+	<label for="RightToLeft">RightToLeft</label>
+	<input id="RightToLeft" type="checkbox" />
+	<label for="SingleLine">SingleLine</label>
+	<input id="SingleLine" type="checkbox" />
+	<label for="Global">Global</label>
+	<input id="Global" type="checkbox" />
+    </div>
+    <p>
+        <label>Search String</label>
+
+        <textarea id="TxtSearchString" onchange="CheckReg()" cols="80" rows="6">
+	</textarea>
+    </p>
+    <p>
+        <label>Pattern</label>
+        <textarea id="TxtPattern" onchange="CheckReg()" cols="80" rows="6">
+	</textarea>
+        </p>
+    <p>
+        <label id="LabelResponse"></label>
+
+    </p>
+
+    <p>
+        <input type="button" id="BtnGo" value="Check" onclick="CheckReg()" />
+    </p>
+
+    
+</body>
+</html>

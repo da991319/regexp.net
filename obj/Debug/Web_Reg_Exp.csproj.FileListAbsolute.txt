@@ -1,0 +1,15 @@
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.dll
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.pdb
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.dll
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.pdb
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.xml
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\obj\Debug\ResolveAssemblyReference.cache
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\obj\Debug\Web_Reg_Exp.dll
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\obj\Debug\Web_Reg_Exp.pdb
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.dll
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.pdb
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.pdb
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.xml
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Debug\Web_Reg_Exp.dll
+C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Debug\Web_Reg_Exp.pdb
