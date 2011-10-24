@@ -24,7 +24,9 @@ namespace Web_Reg_Exp
             if (!string.IsNullOrEmpty(pattern))
             {
 
+                RegexOptions test = new RegexOptions();
 
+               
                 Regex regex = new Regex(pattern);
                 List<string> resultList = new List<string>();
 
@@ -41,7 +43,7 @@ namespace Web_Reg_Exp
             }
             else
             {
-                context.Response.StatusCode = 302;
+                context.Response.StatusCode = 400;
                 context.Response.ContentType = "plain/text";
                 context.Response.Write("pattern is null");
             }
