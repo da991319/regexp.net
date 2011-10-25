@@ -84,19 +84,25 @@ function jsReg() {
 
 function netReg() {
     var input = $("#TxtSearchString").val();
-    var pattern =  $("#TxtPattern").val();
+    var pattern = $("#TxtPattern").val();
     $.ajax({
-        type: "POST",
-        url: "http://aspspider.net/tiphryam/RegExp.ashx",
-        data: "input=" + input + "&pattern=" + pattern,
-        dataType: 'jsonp',
+        url: "http://aspspider.net/tiphryam/RegExp.ashx?callback=?",
+        data: { input: input, pattern: pattern },
+        dataType:"jsonp",
         crossDomain: true,
         success: function (d) {
             var result = d;
             $("#LabelResponse").html(result[0]);
         }
-
     });
+    /*
+    $.getJSON("http://aspspider.net/tiphryam/RegExp.ashx?callback=?",
+        {input: input , pattern: pattern,format: "jsonp"},function (d) {
+            var result = d;
+            $("#LabelResponse").html(result[0]);
+        }
+
+    );*/
 };
 
 </script>

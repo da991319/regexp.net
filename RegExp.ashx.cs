@@ -39,7 +39,15 @@ namespace Web_Reg_Exp
 
                 context.Response.StatusCode = 200;
                 context.Response.ContentType = "application/json";
-                context.Response.Write(json);
+                if (context.Request["callback"]!= null)
+                {
+                    context.Response.Write(context.Request["callback"] + "(" + json + ")");
+                }
+                else
+                {
+                    context.Response.Write(json);
+                }
+                
             }
             else
             {

@@ -6,3 +6,8 @@ C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin
 C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\bin\Newtonsoft.Json.xml
 C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Release\Web_Reg_Exp.dll
 C:\Users\regis\Documents\Visual Studio 2010\Projects\Web_Reg_Exp\Web_Reg_Exp\obj\Release\Web_Reg_Exp.pdb
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.dll
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\bin\Web_Reg_Exp.pdb
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\obj\Release\ResolveAssemblyReference.cache
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\obj\Release\Web_Reg_Exp.dll
+C:\blatant-rep\Test_to_delete\Web_Reg_Exp\Web_Reg_Exp\obj\Release\Web_Reg_Exp.pdb
