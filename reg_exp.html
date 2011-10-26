@@ -32,7 +32,7 @@ function CheckReg(){
     switch(value)
     {
 	case "js":
-	    jsReg();
+	    jsReg(options);
 	    break;
 	case ".net":
 	    netReg();
@@ -85,25 +85,40 @@ function jsReg() {
 function netReg() {
     var input = $("#TxtSearchString").val();
     var pattern = $("#TxtPattern").val();
+    var options = getOptions();
+
     $.ajax({
-        url: "http://aspspider.net/tiphryam/RegExp.ashx?callback=?",
+        type: "POST",
+        url: "http://localhost:50451/RegExp.ashx?callback=?",
         data: { input: input, pattern: pattern },
-        dataType:"jsonp",
+        dataType: "jsonp",
         crossDomain: true,
         success: function (d) {
             var result = d;
-            $("#LabelResponse").html(result[0]);
+            var i;
+            if (result.length > 0) {
+
+                for (i = 0; i < result.length; i++) {
+                    $("#LabelResponse").append((i + 1) + ": " + result[i] + "<br />");
+                }
+            }
+            else {
+                $("#LabelResponse").html("No Match found");
+            }
+            
         }
     });
-    /*
-    $.getJSON("http://aspspider.net/tiphryam/RegExp.ashx?callback=?",
-        {input: input , pattern: pattern,format: "jsonp"},function (d) {
-            var result = d;
-            $("#LabelResponse").html(result[0]);
-        }
 
-    );*/
 };
+
+function getOptions() {
+    var options = [];
+    $("#OptionsDiv input:checked").each(function () {
+        options.push($(this).val());
+    });
+
+    return options;
+}
 
 </script>
 <div id="regexpmain">
@@ -115,23 +130,23 @@ function netReg() {
     <label for="language2" >.Net</label>
     
 </div>
-    <div>
+    <div id= "OptionsDiv">
 	<label for="IgnoreCase">IgnoreCase</label>
-	<input id="IgnoreCase" type="checkbox" />
+	<input id="IgnoreCase" type="checkbox" value="IgnoreCase" />
 	<label for="Global" class="JsOption">Global</label>
-	<input id="Global" type="checkbox" class="JsOption" />
+	<input id="Global" type="checkbox" class="JsOption" value="Global" />
 	<label for="Multiline" class="JsOption">Multiline</label>
-	<input id="Multiline" type="checkbox"  class="JsOption"/>
+	<input id="Multiline" type="checkbox"  class="JsOption" value="Multiline"/>
 	<label for="CheckCult" class="NetOption">Culture Invariant</label>
-	<input id="CheckCult" type="checkbox" class="NetOption"/>
+	<input id="CheckCult" type="checkbox" class="NetOption" value="CheckCult"/>
 	<label for="ExplicitCapture" class="NetOption">ExplicitCapture</label>
-	<input id="ExplicitCapture" type="checkbox" class="NetOption"/>
+	<input id="ExplicitCapture" type="checkbox" class="NetOption" value="ExplicitCapture"/>
 	<label for="IgnorePatterWhiteSpace" class="NetOption">IgnorePatterWhiteSpace</label>
-	<input id="IgnorePatterWhiteSpace" type="checkbox" class="NetOption"/>
+	<input id="IgnorePatterWhiteSpace" type="checkbox" class="NetOption" value="IgnorePatterWhiteSpace"/>
 	<label for="RightToLeft" class="NetOption">RightToLeft</label>
-	<input id="RightToLeft" type="checkbox" class="NetOption"/>
+	<input id="RightToLeft" type="checkbox" class="NetOption" value="RightToLeft"/>
 	<label for="SingleLine" class="NetOption">SingleLine</label>
-	<input id="SingleLine" type="checkbox" class="NetOption"/>
+	<input id="SingleLine" type="checkbox" class="NetOption" value="SingleLine"/>
     </div>
     <fieldset class="regexpinput">
 	<legend>Input</legend>
