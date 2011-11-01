@@ -15,7 +15,7 @@ namespace Web_Reg_Exp
         {
             string input = context.Request["input"];
             string pattern = context.Request["pattern"];
-
+            string options = context.Request["options"];
             //input = "test";
             //pattern = @"\w";
 
@@ -24,10 +24,34 @@ namespace Web_Reg_Exp
             if (!string.IsNullOrEmpty(pattern))
             {
 
-                RegexOptions test = new RegexOptions();
+                RegexOptions regOptions = new RegexOptions();
 
+                foreach (string op in options.Split(','))
+                {
+                    switch (op)
+                    {
+                        case "IgnoreCase":
+                            regOptions |= RegexOptions.IgnoreCase;
+                            break;
+                        case "CheckCult":
+                            regOptions |= RegexOptions.CultureInvariant;
+                            break;
+                        case "ExplicitCapture":
+                            regOptions |= RegexOptions.ExplicitCapture;
+                            break;
+                        case "IgnorePatterWhiteSpace":
+                            regOptions |= RegexOptions.IgnorePatternWhitespace;
+                            break;
+                        case "RightToLeft":
+                            regOptions |= RegexOptions.RightToLeft;
+                            break;
+                        case "SingleLine":
+                            regOptions |= RegexOptions.Singleline;
+                            break;
+                    }
+                }
                
-                Regex regex = new Regex(pattern);
+                Regex regex = new Regex(pattern,regOptions);
                 List<string> resultList = new List<string>();
 
                 foreach (Match item in regex.Matches(input))
